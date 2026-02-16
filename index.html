@@ -8,25 +8,24 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Diagnóstico de Posicionamento Lucrativo" />
-  <meta property="og:description" content="Faça o diagnóstico e receba sua análise personalizada no WhatsApp." />
+  <meta property="og:description" content="Faça o diagnóstico e envie suas respostas no WhatsApp para receber sua análise." />
   <meta property="og:type" content="website" />
 
   <style>
     :root{
-      --bg:#0B1220;
-      --card:#0F1B33;
-      --card2:#0C1730;
-      --text:#EAF0FF;
-      --muted:#B7C3E0;
-      --line:rgba(255,255,255,.10);
+      --bg:#F7F8FC;
+      --card:#FFFFFF;
+      --text:#0F172A;
+      --muted:#475569;
+      --line:#E6EAF2;
 
       --p:#7C3AED;      /* roxo */
-      --p2:#22D3EE;     /* cyan */
+      --p2:#06B6D4;     /* cyan */
       --ok:#10B981;
       --warn:#F59E0B;
 
       --radius:18px;
-      --shadow: 0 18px 48px rgba(0,0,0,.35);
+      --shadow: 0 14px 34px rgba(15, 23, 42, .08);
     }
 
     *{box-sizing:border-box}
@@ -36,16 +35,19 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
       color:var(--text);
       background:
-        radial-gradient(900px 600px at 10% 0%, rgba(124,58,237,.35), transparent 60%),
-        radial-gradient(900px 600px at 90% 0%, rgba(34,211,238,.22), transparent 60%),
-        linear-gradient(180deg, #070B14, var(--bg));
+        radial-gradient(900px 600px at 0% 0%, rgba(124,58,237,.10), transparent 55%),
+        radial-gradient(900px 600px at 100% 0%, rgba(6,182,212,.08), transparent 55%),
+        linear-gradient(180deg, #FFFFFF, var(--bg));
+      line-height:1.6;
     }
 
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+    /* TOPBAR */
     .topbar{
       position:sticky;top:0;z-index:20;
-      background:rgba(7,11,20,.55);
+      background:rgba(255,255,255,.75);
       border-bottom:1px solid var(--line);
       backdrop-filter: blur(10px);
     }
@@ -60,11 +62,17 @@
       font-size:12px;
       padding:6px 10px;border-radius:999px;
       border:1px solid var(--line);
-      background:linear-gradient(90deg, rgba(124,58,237,.25), rgba(34,211,238,.18));
+      background:linear-gradient(90deg, rgba(124,58,237,.10), rgba(6,182,212,.10));
       color:var(--muted);
       white-space:nowrap;
     }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:linear-gradient(90deg,var(--p),var(--p2));
+      box-shadow:0 0 0 6px rgba(124,58,237,.10);
+    }
 
+    /* BUTTONS */
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:10px;
       padding:14px 18px;border-radius:14px;
@@ -74,20 +82,21 @@
       transition: transform .12s ease, filter .12s ease, background .12s ease, border-color .12s ease;
       user-select:none;
     }
-    .btn:focus{outline:3px solid rgba(34,211,238,.35); outline-offset:2px}
-    .btn:hover{transform: translateY(-1px); filter:brightness(1.05)}
+    .btn:focus{outline:3px solid rgba(6,182,212,.30); outline-offset:2px}
+    .btn:hover{transform: translateY(-1px); filter:brightness(1.02)}
     .btn.primary{
       background:linear-gradient(90deg, var(--p), var(--p2));
-      color:#07101F;
-      box-shadow: 0 14px 36px rgba(124,58,237,.25);
+      color:#ffffff;
+      box-shadow: 0 14px 30px rgba(124,58,237,.18);
     }
     .btn.ghost{
-      background:rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.12);
+      background:#fff;
+      border-color: var(--line);
       color:var(--text);
     }
 
-    header.hero{padding:54px 0 18px}
+    /* HERO */
+    header.hero{padding:52px 0 18px}
     .heroGrid{
       display:grid;gap:18px;
       grid-template-columns: 1fr;
@@ -98,12 +107,13 @@
     }
 
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background: var(--card);
       border:1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
     .card.pad{padding:26px}
+
     .kicker{
       display:inline-flex;align-items:center;gap:10px;
       color:var(--muted);
@@ -111,11 +121,6 @@
       text-transform:uppercase;
       letter-spacing:.12em;
       font-size:12px;
-    }
-    .dot{
-      width:10px;height:10px;border-radius:50%;
-      background:linear-gradient(90deg,var(--p),var(--p2));
-      box-shadow:0 0 0 6px rgba(124,58,237,.12);
     }
     h1{
       margin:10px 0 8px;
@@ -126,84 +131,85 @@
     .sub{
       color:var(--muted);
       font-size:18px;
-      max-width:58ch;
+      max-width:62ch;
       margin:0 0 16px;
     }
+    .actions{
+      display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+      margin-top:12px;
+    }
+
     .heroList{
       margin:14px 0 0; padding:0; list-style:none;
       display:grid; gap:10px;
     }
     .heroList li{
       display:flex; gap:10px; align-items:flex-start;
-      padding:10px 12px;
+      padding:12px 12px;
       border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(0,0,0,.12);
+      border:1px solid var(--line);
+      background: rgba(124,58,237,.03);
       color:var(--muted);
     }
     .heroList b{color:var(--text)}
     .check{
       width:20px;height:20px;border-radius:6px;
       display:inline-grid;place-items:center;
-      background:rgba(16,185,129,.14);
-      border:1px solid rgba(16,185,129,.25);
+      background:rgba(16,185,129,.10);
+      border:1px solid rgba(16,185,129,.22);
       flex:0 0 auto;
       margin-top:1px;
     }
     .check svg{width:14px;height:14px;fill:var(--ok)}
 
-    .asideBox{
-      height:100%;
-      display:flex;flex-direction:column;gap:14px;
-    }
     .metric{
-      padding:16px 16px;
+      padding:16px;
       border-radius:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background:linear-gradient(180deg, rgba(12,23,48,.72), rgba(12,23,48,.35));
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(6,182,212,.05), rgba(124,58,237,.03));
     }
     .metric .t{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:900}
-    .metric .v{font-size:22px;font-weight:950;margin-top:6px}
+    .metric .v{font-size:18px;font-weight:950;margin-top:6px}
     .metric .s{color:var(--muted);font-size:14px;margin-top:6px}
 
-    .section{padding:22px 0 0}
-    .section h2{
+    /* SECTIONS */
+    section.section{padding:26px 0 0}
+    section.blocksec{padding:44px 0;border-top:1px solid var(--line)}
+    .sectionTitle{
       font-size: clamp(26px, 3.6vw, 40px);
       line-height:1.15;
       margin:0 0 12px;
       font-weight: 950;
-      background: linear-gradient(90deg, #fff, rgba(255,255,255,.70));
-      -webkit-background-clip:text;background-clip:text;color:transparent;
     }
-    .section p{color:var(--muted);font-size:18px;margin:0 0 16px}
+    .lead{color:var(--muted);font-size:18px;margin:0 0 16px}
 
     .grid2{display:grid;gap:16px;grid-template-columns:1fr}
     @media(min-width:860px){.grid2{grid-template-columns:1fr 1fr}}
 
     .note{
-      border-left:4px solid rgba(245,158,11,.7);
+      border-left:4px solid rgba(245,158,11,.70);
       padding:12px 14px;
-      background:rgba(245,158,11,.08);
+      background:rgba(245,158,11,.10);
       border-radius:14px;
       color:var(--muted);
+      border:1px solid rgba(245,158,11,.25);
     }
 
     /* FORM */
-    form{margin-top:18px}
-    .block{
+    form{margin-top:10px}
+    .qblock{
       margin:14px 0;
       padding:18px;
       border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(15,27,51,.92), rgba(15,27,51,.55));
+      border:1px solid var(--line);
+      background: #fff;
     }
-    .block h3{
+    .qblock h3{
       margin:0 0 10px;
       font-size:18px;
       font-weight:950;
-      letter-spacing:.01em;
     }
-    .block .desc{margin:0 0 10px;color:var(--muted);font-size:15px}
+    .qblock .desc{margin:0 0 10px;color:var(--muted);font-size:15px}
 
     .opts{display:grid;gap:10px;margin-top:10px}
     @media(min-width:720px){.opts{grid-template-columns:1fr 1fr}}
@@ -211,11 +217,11 @@
       display:flex;gap:12px;align-items:flex-start;
       padding:12px 12px;
       border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(0,0,0,.10);
-      transition: border-color .12s ease, background .12s ease;
+      border:1px solid var(--line);
+      background: #fff;
+      transition: border-color .12s ease, background .12s ease, transform .12s ease;
     }
-    .opt:hover{border-color: rgba(34,211,238,.25); background:rgba(34,211,238,.06)}
+    .opt:hover{border-color: rgba(6,182,212,.45); background:rgba(6,182,212,.05); transform: translateY(-1px)}
     .opt input{
       width:18px;height:18px; margin-top:2px;
       accent-color: var(--p2);
@@ -228,41 +234,26 @@
       font-weight:700;
       line-height:1.35;
     }
-    .opt small{display:block;color:var(--muted);font-weight:600;margin-top:2px}
 
-    .actions{
-      display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+    .helper{
       margin-top:14px;
-    }
-
-    .summary{
-      margin-top:16px;
-      padding:16px;
-      border-radius: var(--radius);
-      border:1px dashed rgba(255,255,255,.18);
-      background: rgba(0,0,0,.12);
+      padding:14px;
+      border-radius:14px;
+      border:1px dashed rgba(124,58,237,.35);
+      background: rgba(124,58,237,.05);
       color:var(--muted);
       font-size:14px;
     }
-    .summary b{color:var(--text)}
-    .summary pre{
-      margin:10px 0 0;
-      white-space:pre-wrap;
-      word-break:break-word;
-      background: rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.10);
-      padding:12px;
-      border-radius:14px;
-      color:#EAF0FF;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size:13px;
-    }
+    .helper b{color:var(--text)}
 
     .footer{
       padding:40px 0;
-      color:rgba(234,240,255,.75);
+      color:rgba(15,23,42,.70);
       font-size:14px;
       text-align:center;
+      border-top:1px solid var(--line);
+      margin-top:40px;
+      background: rgba(255,255,255,.5);
     }
 
     /* Whats float */
@@ -274,12 +265,17 @@
       border-radius:50%;
       display:grid;place-items:center;
       background:#25D366;
-      box-shadow:0 18px 40px rgba(0,0,0,.35);
+      box-shadow:0 18px 40px rgba(0,0,0,.18);
       z-index:50;
-      border:1px solid rgba(255,255,255,.25);
+      border:1px solid rgba(255,255,255,.55);
     }
-    .whats:focus{outline:3px solid rgba(255,255,255,.35); outline-offset:3px}
+    .whats:focus{outline:3px solid rgba(6,182,212,.30); outline-offset:3px}
     .whats svg{width:30px;height:30px;fill:#fff}
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none !important}
+    }
   </style>
 </head>
 
@@ -291,7 +287,7 @@
       <div class="brand">
         <span class="dot" aria-hidden="true"></span>
         <span>Diagnóstico de Posicionamento</span>
-        <span class="badge">WhatsApp + Análise</span>
+        <span class="badge">Envio via WhatsApp</span>
       </div>
 
       <a class="btn ghost" href="#diagnostico">Fazer agora</a>
@@ -304,7 +300,7 @@
       <div class="heroGrid">
 
         <div class="card pad">
-          <div class="kicker"><span class="dot" aria-hidden="true"></span> Descubra o que está travando seu crescimento</div>
+          <div class="kicker"><span class="dot" aria-hidden="true"></span> Descubra o que trava seu crescimento financeiro</div>
           <h1>Diagnóstico de <span style="background:linear-gradient(90deg,var(--p),var(--p2));-webkit-background-clip:text;background-clip:text;color:transparent">Posicionamento Lucrativo</span></h1>
           <p class="sub">Você trabalha muito… mas não cresce como poderia? O problema geralmente não é técnica. É decisão, postura e posicionamento.</p>
 
@@ -321,34 +317,36 @@
               <span class="check" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8.5-8.5 1.4 1.4z"/></svg>
               </span>
-              <div><b>Identifique</b> seu bloqueio principal e o nível do seu posicionamento.</div>
+              <div><b>Identifique</b> o bloqueio principal e o nível do seu posicionamento.</div>
             </li>
             <li>
               <span class="check" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8.5-8.5 1.4 1.4z"/></svg>
               </span>
-              <div><b>Receba</b> um próximo passo objetivo para crescer financeiramente.</div>
+              <div><b>Envie</b> suas respostas no WhatsApp para receber sua devolutiva.</div>
             </li>
             <li>
               <span class="check" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8.5-8.5 1.4 1.4z"/></svg>
               </span>
-              <div><b>Envie</b> suas respostas com 1 clique pelo WhatsApp.</div>
+              <div><b>Próximo passo</b> objetivo para destravar crescimento financeiro.</div>
             </li>
           </ul>
         </div>
 
-        <aside class="card pad asideBox" aria-label="Resumo estratégico">
+        <aside class="card pad" aria-label="Resumo estratégico">
           <div class="metric">
             <div class="t">A verdade</div>
             <div class="v">Posicionamento define faturamento.</div>
             <div class="s">Se você não se posiciona, o mercado te posiciona — normalmente para baixo.</div>
           </div>
+          <div style="height:12px"></div>
           <div class="metric">
             <div class="t">Profissionais crescem porque</div>
             <div class="v">Sustentam preço, autoridade e limites.</div>
             <div class="s">Eles sabem dizer não, tomam decisões difíceis e não negociam seu valor.</div>
           </div>
+          <div style="height:12px"></div>
           <div class="metric">
             <div class="t">O erro comum</div>
             <div class="v">Mais curso, mais técnica…</div>
@@ -357,279 +355,127 @@
         </aside>
 
       </div>
+
+      <section class="section">
+        <h2 class="sectionTitle">Você trabalha muito… mas não cresce como poderia?</h2>
+        <p class="lead">
+          Seja sincero: você sabe que tem potencial para ganhar mais, mas continua cobrando abaixo do que vale,
+          evita se posicionar e vê profissionais menos preparados faturando mais.
+        </p>
+      </section>
     </div>
   </header>
 
-  <!-- SEÇÃO VERDADE -->
-  <section class="section">
+  <!-- BLOQUEIOS -->
+  <section class="blocksec">
     <div class="wrap">
-      <h2>A verdade que quase ninguém diz</h2>
+      <h2 class="sectionTitle">Os 4 bloqueios que impedem crescimento financeiro</h2>
       <div class="grid2">
         <div class="card pad">
-          <p style="margin:0;color:var(--muted)">
-            Profissionais não crescem só por competência. Crescem porque sustentam preço, assumem autoridade,
-            sabem dizer “não”, tomam decisões difíceis e não negociam o próprio valor.
-          </p>
-        </div>
-        <div class="note">
-          <b style="color:var(--text)">Se você não se posiciona, o mercado te posiciona.</b><br/>
-          E normalmente… para baixo.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEÇÃO BLOQUEIOS -->
-  <section class="section">
-    <div class="wrap">
-      <h2>Por que você ainda não cresceu?</h2>
-      <p>Existem apenas <b style="color:var(--text)">4 bloqueios principais</b> que impedem crescimento financeiro:</p>
-      <div class="grid2">
-        <div class="card pad">
-          <ul style="margin:0;padding-left:18px">
+          <ul style="margin:0;padding-left:18px;color:var(--muted);font-size:18px">
             <li><b style="color:var(--text)">Medo de julgamento</b></li>
             <li><b style="color:var(--text)">Medo de perder clientes</b></li>
             <li><b style="color:var(--text)">Insegurança sobre o próprio valor</b></li>
             <li><b style="color:var(--text)">Lealdade inconsciente</b> a padrões financeiros familiares</li>
           </ul>
         </div>
-        <div class="card pad" style="background:linear-gradient(180deg, rgba(124,58,237,.18), rgba(255,255,255,.03));">
-          <p style="margin:0;color:var(--muted)">
-            A maioria tenta resolver com mais curso, mais estratégia, mais técnica…<br>
-            <b style="color:var(--text)">Mas o bloqueio está na decisão.</b>
-          </p>
+        <div class="note">
+          <b style="color:var(--text)">A maioria tenta resolver com mais curso.</b><br/>
+          Mas o bloqueio está na decisão e no posicionamento.
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DIAGNÓSTICO (CHECKLISTS) -->
-  <section class="section" id="diagnostico">
+  <!-- DIAGNÓSTICO -->
+  <section class="blocksec" id="diagnostico">
     <div class="wrap">
-      <h2>Faça agora seu diagnóstico</h2>
-      <p>Assinale o que descreve sua realidade. No final, clique em <b style="color:var(--text)">“Enviar no WhatsApp”</b>.</p>
+      <h2 class="sectionTitle">Faça agora seu diagnóstico</h2>
+      <p class="lead">Assinale com honestidade. Ao final, clique em <b>“Enviar no WhatsApp”</b> para receber sua devolutiva.</p>
 
       <form id="diagForm" class="card pad" aria-label="Formulário do diagnóstico">
 
         <!-- 1 -->
-        <div class="block" role="group" aria-labelledby="t1">
+        <div class="qblock" role="group" aria-labelledby="t1">
           <h3 id="t1">1️⃣ Sobre sua realidade financeira</h3>
           <p class="desc">Hoje você:</p>
-
           <div class="opts">
-            <div class="opt">
-              <input id="f1" type="checkbox" name="fin" value="Estou estagnado há mais de 12 meses">
-              <label for="f1">Estou estagnado há mais de 12 meses</label>
-            </div>
-            <div class="opt">
-              <input id="f2" type="checkbox" name="fin" value="Trabalho muito e ganho pouco">
-              <label for="f2">Trabalho muito e ganho pouco</label>
-            </div>
-            <div class="opt">
-              <input id="f3" type="checkbox" name="fin" value="Cobro menos do que deveria">
-              <label for="f3">Cobro menos do que deveria</label>
-            </div>
-            <div class="opt">
-              <input id="f4" type="checkbox" name="fin" value="Tenho medo de aumentar preços">
-              <label for="f4">Tenho medo de aumentar preços</label>
-            </div>
-            <div class="opt">
-              <input id="f5" type="checkbox" name="fin" value="Dependo exclusivamente de indicação">
-              <label for="f5">Dependo exclusivamente de indicação</label>
-            </div>
-            <div class="opt">
-              <input id="f6" type="checkbox" name="fin" value="Sinto que meu esforço não retorna financeiramente">
-              <label for="f6">Sinto que meu esforço não retorna financeiramente</label>
-            </div>
-            <div class="opt">
-              <input id="f7" type="checkbox" name="fin" value="Estou cansado de sobreviver financeiramente">
-              <label for="f7">Estou cansado de sobreviver financeiramente</label>
-            </div>
+            <div class="opt"><input id="f1" type="checkbox" name="fin" value="Estou estagnado há mais de 12 meses"><label for="f1">Estou estagnado há mais de 12 meses</label></div>
+            <div class="opt"><input id="f2" type="checkbox" name="fin" value="Trabalho muito e ganho pouco"><label for="f2">Trabalho muito e ganho pouco</label></div>
+            <div class="opt"><input id="f3" type="checkbox" name="fin" value="Cobro menos do que deveria"><label for="f3">Cobro menos do que deveria</label></div>
+            <div class="opt"><input id="f4" type="checkbox" name="fin" value="Tenho medo de aumentar preços"><label for="f4">Tenho medo de aumentar preços</label></div>
+            <div class="opt"><input id="f5" type="checkbox" name="fin" value="Dependo exclusivamente de indicação"><label for="f5">Dependo exclusivamente de indicação</label></div>
+            <div class="opt"><input id="f6" type="checkbox" name="fin" value="Sinto que meu esforço não retorna financeiramente"><label for="f6">Sinto que meu esforço não retorna financeiramente</label></div>
+            <div class="opt"><input id="f7" type="checkbox" name="fin" value="Estou cansado de sobreviver financeiramente"><label for="f7">Estou cansado de sobreviver financeiramente</label></div>
           </div>
         </div>
 
         <!-- 2 -->
-        <div class="block" role="group" aria-labelledby="t2">
+        <div class="qblock" role="group" aria-labelledby="t2">
           <h3 id="t2">2️⃣ Sobre seu posicionamento profissional</h3>
           <p class="desc">Quando precisa se posicionar:</p>
-
           <div class="opts">
-            <div class="opt">
-              <input id="p1" type="checkbox" name="pos" value="Evito conflito">
-              <label for="p1">Evito conflito</label>
-            </div>
-            <div class="opt">
-              <input id="p2" type="checkbox" name="pos" value="Explico demais meu valor">
-              <label for="p2">Explico demais meu valor</label>
-            </div>
-            <div class="opt">
-              <input id="p3" type="checkbox" name="pos" value="Aceito qualquer cliente">
-              <label for="p3">Aceito qualquer cliente</label>
-            </div>
-            <div class="opt">
-              <input id="p4" type="checkbox" name="pos" value="Tenho dificuldade de dizer não">
-              <label for="p4">Tenho dificuldade de dizer “não”</label>
-            </div>
-            <div class="opt">
-              <input id="p5" type="checkbox" name="pos" value="Não me exponho nas redes">
-              <label for="p5">Não me exponho nas redes</label>
-            </div>
-            <div class="opt">
-              <input id="p6" type="checkbox" name="pos" value="Me comparo com concorrentes">
-              <label for="p6">Me comparo com concorrentes</label>
-            </div>
-            <div class="opt">
-              <input id="p7" type="checkbox" name="pos" value="Espero estar mais preparado para agir">
-              <label for="p7">Espero estar mais preparado para agir</label>
-            </div>
+            <div class="opt"><input id="p1" type="checkbox" name="pos" value="Evito conflito"><label for="p1">Evito conflito</label></div>
+            <div class="opt"><input id="p2" type="checkbox" name="pos" value="Explico demais meu valor"><label for="p2">Explico demais meu valor</label></div>
+            <div class="opt"><input id="p3" type="checkbox" name="pos" value="Aceito qualquer cliente"><label for="p3">Aceito qualquer cliente</label></div>
+            <div class="opt"><input id="p4" type="checkbox" name="pos" value="Tenho dificuldade de dizer não"><label for="p4">Tenho dificuldade de dizer “não”</label></div>
+            <div class="opt"><input id="p5" type="checkbox" name="pos" value="Não me exponho nas redes"><label for="p5">Não me exponho nas redes</label></div>
+            <div class="opt"><input id="p6" type="checkbox" name="pos" value="Me comparo com concorrentes"><label for="p6">Me comparo com concorrentes</label></div>
+            <div class="opt"><input id="p7" type="checkbox" name="pos" value="Espero estar mais preparado para agir"><label for="p7">Espero estar mais preparado para agir</label></div>
           </div>
         </div>
 
         <!-- 3 -->
-        <div class="block" role="group" aria-labelledby="t3">
+        <div class="qblock" role="group" aria-labelledby="t3">
           <h3 id="t3">3️⃣ Sobre o bloqueio interno</h3>
           <p class="desc">Quando pensa em crescer, você sente:</p>
-
           <div class="opts">
-            <div class="opt">
-              <input id="b1" type="checkbox" name="blk" value="Medo de julgamento">
-              <label for="b1">Medo de julgamento</label>
-            </div>
-            <div class="opt">
-              <input id="b2" type="checkbox" name="blk" value="Medo de fracassar">
-              <label for="b2">Medo de fracassar</label>
-            </div>
-            <div class="opt">
-              <input id="b3" type="checkbox" name="blk" value="Medo de parecer arrogante">
-              <label for="b3">Medo de parecer arrogante</label>
-            </div>
-            <div class="opt">
-              <input id="b4" type="checkbox" name="blk" value="Medo de perder clientes">
-              <label for="b4">Medo de perder clientes</label>
-            </div>
-            <div class="opt">
-              <input id="b5" type="checkbox" name="blk" value="Medo de ganhar mais que alguém da família">
-              <label for="b5">Medo de ganhar mais que alguém da família</label>
-            </div>
-            <div class="opt">
-              <input id="b6" type="checkbox" name="blk" value="Ansiedade">
-              <label for="b6">Ansiedade</label>
-            </div>
-            <div class="opt">
-              <input id="b7" type="checkbox" name="blk" value="Procrastinação">
-              <label for="b7">Procrastinação</label>
-            </div>
-            <div class="opt">
-              <input id="b8" type="checkbox" name="blk" value="Insegurança">
-              <label for="b8">Insegurança</label>
-            </div>
+            <div class="opt"><input id="b1" type="checkbox" name="blk" value="Medo de julgamento"><label for="b1">Medo de julgamento</label></div>
+            <div class="opt"><input id="b2" type="checkbox" name="blk" value="Medo de fracassar"><label for="b2">Medo de fracassar</label></div>
+            <div class="opt"><input id="b3" type="checkbox" name="blk" value="Medo de parecer arrogante"><label for="b3">Medo de parecer arrogante</label></div>
+            <div class="opt"><input id="b4" type="checkbox" name="blk" value="Medo de perder clientes"><label for="b4">Medo de perder clientes</label></div>
+            <div class="opt"><input id="b5" type="checkbox" name="blk" value="Medo de ganhar mais que alguém da família"><label for="b5">Medo de ganhar mais que alguém da família</label></div>
+            <div class="opt"><input id="b6" type="checkbox" name="blk" value="Ansiedade"><label for="b6">Ansiedade</label></div>
+            <div class="opt"><input id="b7" type="checkbox" name="blk" value="Procrastinação"><label for="b7">Procrastinação</label></div>
+            <div class="opt"><input id="b8" type="checkbox" name="blk" value="Insegurança"><label for="b8">Insegurança</label></div>
           </div>
         </div>
 
         <!-- 4 -->
-        <div class="block" role="group" aria-labelledby="t4">
+        <div class="qblock" role="group" aria-labelledby="t4">
           <h3 id="t4">4️⃣ Qual decisão você está adiando?</h3>
           <p class="desc">Assinale o que faz mais sentido agora:</p>
-
           <div class="opts">
-            <div class="opt">
-              <input id="d1" type="checkbox" name="dec" value="Aumentar preço">
-              <label for="d1">Aumentar preço</label>
-            </div>
-            <div class="opt">
-              <input id="d2" type="checkbox" name="dec" value="Nichar meu público">
-              <label for="d2">Nichar seu público</label>
-            </div>
-            <div class="opt">
-              <input id="d3" type="checkbox" name="dec" value="Lançar um novo serviço">
-              <label for="d3">Lançar um novo serviço</label>
-            </div>
-            <div class="opt">
-              <input id="d4" type="checkbox" name="dec" value="Pedir promoção">
-              <label for="d4">Pedir promoção</label>
-            </div>
-            <div class="opt">
-              <input id="d5" type="checkbox" name="dec" value="Sair do emprego atual">
-              <label for="d5">Sair do emprego atual</label>
-            </div>
-            <div class="opt">
-              <input id="d6" type="checkbox" name="dec" value="Me posicionar como especialista">
-              <label for="d6">Se posicionar como especialista</label>
-            </div>
-            <div class="opt">
-              <input id="d7" type="checkbox" name="dec" value="Estruturar minha marca pessoal">
-              <label for="d7">Estruturar marca pessoal</label>
-            </div>
+            <div class="opt"><input id="d1" type="checkbox" name="dec" value="Aumentar preço"><label for="d1">Aumentar preço</label></div>
+            <div class="opt"><input id="d2" type="checkbox" name="dec" value="Nichar meu público"><label for="d2">Nichar seu público</label></div>
+            <div class="opt"><input id="d3" type="checkbox" name="dec" value="Lançar um novo serviço"><label for="d3">Lançar um novo serviço</label></div>
+            <div class="opt"><input id="d4" type="checkbox" name="dec" value="Pedir promoção"><label for="d4">Pedir promoção</label></div>
+            <div class="opt"><input id="d5" type="checkbox" name="dec" value="Sair do emprego atual"><label for="d5">Sair do emprego atual</label></div>
+            <div class="opt"><input id="d6" type="checkbox" name="dec" value="Me posicionar como especialista"><label for="d6">Se posicionar como especialista</label></div>
+            <div class="opt"><input id="d7" type="checkbox" name="dec" value="Estruturar minha marca pessoal"><label for="d7">Estruturar marca pessoal</label></div>
           </div>
 
-          <div class="note" style="margin-top:14px;border-left-color:rgba(16,185,129,.7);background:rgba(16,185,129,.08)">
-            <b style="color:var(--text)">Importante:</b> este diagnóstico funciona quando você responde com sinceridade.
+          <div class="helper">
+            <b>IMPORTANTE:</b> a devolutiva é enviada após você clicar em <b>“Enviar no WhatsApp”</b> com suas respostas.
           </div>
         </div>
 
         <div class="actions">
-          <button type="button" class="btn primary" id="sendBtn">
-            Gerar mensagem e enviar no WhatsApp
-          </button>
-
-          <button type="button" class="btn ghost" id="copyBtn">
-            Copiar mensagem
-          </button>
-
-          <button type="button" class="btn ghost" id="resetBtn">
-            Limpar marcações
-          </button>
-        </div>
-
-        <div class="summary" id="summary" aria-live="polite">
-          <b>Prévia da mensagem:</b>
-          <pre id="preview">Marque as opções acima para gerar sua mensagem automaticamente.</pre>
+          <button type="button" class="btn primary" id="sendBtn">Enviar no WhatsApp</button>
+          <button type="button" class="btn ghost" id="resetBtn">Limpar marcações</button>
         </div>
 
       </form>
     </div>
   </section>
 
-  <!-- PARA QUEM É / NÃO É -->
-  <section class="section">
-    <div class="wrap">
-      <div class="grid2">
-        <div class="card pad">
-          <h2 style="margin-bottom:10px">Para quem é</h2>
-          <ul style="margin:0;padding-left:18px">
-            <li>Profissionais autônomos</li>
-            <li>Empresários</li>
-            <li>Especialistas</li>
-            <li>Prestadores de serviço</li>
-            <li>Pessoas em transição de carreira</li>
-            <li>Quem quer aumentar renda</li>
-          </ul>
-        </div>
-
-        <div class="card pad" style="background:linear-gradient(180deg, rgba(245,158,11,.14), rgba(255,255,255,.03));">
-          <h2 style="margin-bottom:10px">Não é para você se</h2>
-          <ul style="margin:0;padding-left:18px">
-            <li>Quer fórmula mágica</li>
-            <li>Não quer assumir responsabilidade</li>
-            <li>Prefere culpar o mercado</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="note" style="margin-top:16px">
-        <b style="color:var(--text)">Se você continuar adiando decisões estratégicas:</b><br>
-        seu faturamento continuará refletindo sua insegurança. Crescimento começa quando você sustenta posicionamento.
-      </div>
-    </div>
-  </section>
-
   <!-- CTA FINAL -->
-  <section class="section">
+  <section class="blocksec">
     <div class="wrap">
       <div class="card pad" style="text-align:center">
-        <h2 style="margin-bottom:8px">Seu faturamento atual é um reflexo direto do seu posicionamento.</h2>
-        <p style="margin:0 0 16px">A pergunta é: <b style="color:var(--text)">você está pronto para assumir outro nível?</b></p>
-        <a class="btn primary" href="#diagnostico">Clique e faça o diagnóstico</a>
+        <h2 class="sectionTitle" style="margin-bottom:10px">Seu faturamento é reflexo do seu posicionamento.</h2>
+        <p class="lead" style="margin-bottom:18px">Você está pronto para assumir outro nível?</p>
+        <a class="btn primary" href="#diagnostico">Fazer diagnóstico agora</a>
       </div>
     </div>
   </section>
@@ -650,11 +496,8 @@
   <script>
     (function(){
       const WA_NUMBER = "5549998110445";
-
       const form = document.getElementById('diagForm');
-      const preview = document.getElementById('preview');
       const sendBtn = document.getElementById('sendBtn');
-      const copyBtn = document.getElementById('copyBtn');
       const resetBtn = document.getElementById('resetBtn');
 
       function getChecked(name){
@@ -668,7 +511,7 @@
         const dec = getChecked('dec');
 
         const lines = [];
-        lines.push("Olá, fiz o Diagnóstico de Posicionamento Lucrativo e quero receber minha análise.");
+        lines.push("Olá, fiz o Diagnóstico de Posicionamento Lucrativo e quero receber minha devolutiva.");
         lines.push("");
         lines.push("1) Realidade financeira:");
         lines.push(fin.length ? fin.map(x=>"• "+x).join("\n") : "• (não assinalei)");
@@ -682,52 +525,20 @@
         lines.push("4) Decisão que estou adiando:");
         lines.push(dec.length ? dec.map(x=>"• "+x).join("\n") : "• (não assinalei)");
         lines.push("");
-        lines.push("Pode me orientar com o próximo passo?");
+        lines.push("Pode me enviar a análise e o próximo passo?");
 
         return lines.join("\n");
       }
 
-      function updatePreview(){
-        preview.textContent = buildMessage();
-      }
-
-      // Atualiza preview em tempo real
-      form.addEventListener('change', updatePreview);
-
-      // Enviar no WhatsApp
       sendBtn.addEventListener('click', () => {
         const msg = buildMessage();
         const url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
         window.open(url, "_blank", "noopener");
       });
 
-      // Copiar
-      copyBtn.addEventListener('click', async () => {
-        try{
-          await navigator.clipboard.writeText(buildMessage());
-          copyBtn.textContent = "Copiado ✅";
-          setTimeout(()=>copyBtn.textContent="Copiar mensagem", 1400);
-        }catch(e){
-          // fallback simples
-          const t = document.createElement('textarea');
-          t.value = buildMessage();
-          document.body.appendChild(t);
-          t.select();
-          document.execCommand('copy');
-          t.remove();
-          copyBtn.textContent = "Copiado ✅";
-          setTimeout(()=>copyBtn.textContent="Copiar mensagem", 1400);
-        }
-      });
-
-      // Limpar
       resetBtn.addEventListener('click', () => {
         form.querySelectorAll('input[type="checkbox"]').forEach(i=>i.checked=false);
-        updatePreview();
       });
-
-      // Inicializa
-      updatePreview();
     })();
   </script>
 </body>
