@@ -6,7 +6,6 @@
   <title>Diagnóstico de Posicionamento Lucrativo</title>
   <meta name="description" content="Descubra o que está travando seu crescimento financeiro. Faça seu diagnóstico e receba uma análise personalizada no WhatsApp." />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Diagnóstico de Posicionamento Lucrativo" />
   <meta property="og:description" content="Faça o diagnóstico e envie suas respostas no WhatsApp para receber sua análise." />
   <meta property="og:type" content="website" />
@@ -19,8 +18,8 @@
       --muted:#475569;
       --line:#E6EAF2;
 
-      --p:#7C3AED;      /* roxo */
-      --p2:#06B6D4;     /* cyan */
+      --p:#7C3AED;
+      --p2:#06B6D4;
       --ok:#10B981;
       --warn:#F59E0B;
 
@@ -47,7 +46,7 @@
     /* TOPBAR */
     .topbar{
       position:sticky;top:0;z-index:20;
-      background:rgba(255,255,255,.75);
+      background:rgba(255,255,255,.82);
       border-bottom:1px solid var(--line);
       backdrop-filter: blur(10px);
     }
@@ -57,6 +56,7 @@
     }
     .brand{
       display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.02em;
+      min-width:0;
     }
     .badge{
       font-size:12px;
@@ -70,6 +70,7 @@
       width:10px;height:10px;border-radius:50%;
       background:linear-gradient(90deg,var(--p),var(--p2));
       box-shadow:0 0 0 6px rgba(124,58,237,.10);
+      flex:0 0 auto;
     }
 
     /* BUTTONS */
@@ -81,6 +82,7 @@
       cursor:pointer;
       transition: transform .12s ease, filter .12s ease, background .12s ease, border-color .12s ease;
       user-select:none;
+      text-align:center;
     }
     .btn:focus{outline:3px solid rgba(6,182,212,.30); outline-offset:2px}
     .btn:hover{transform: translateY(-1px); filter:brightness(1.02)}
@@ -124,8 +126,8 @@
     }
     h1{
       margin:10px 0 8px;
-      font-size: clamp(34px, 4.6vw, 58px);
-      line-height:1.05;
+      font-size: clamp(32px, 6vw, 58px);
+      line-height:1.06;
       font-weight: 950;
     }
     .sub{
@@ -176,7 +178,7 @@
     section.section{padding:26px 0 0}
     section.blocksec{padding:44px 0;border-top:1px solid var(--line)}
     .sectionTitle{
-      font-size: clamp(26px, 3.6vw, 40px);
+      font-size: clamp(24px, 4.6vw, 40px);
       line-height:1.15;
       margin:0 0 12px;
       font-weight: 950;
@@ -260,7 +262,7 @@
     .whats{
       position:fixed;
       right:18px;
-      bottom:18px;
+      bottom:calc(18px + env(safe-area-inset-bottom));
       width:62px;height:62px;
       border-radius:50%;
       display:grid;place-items:center;
@@ -272,16 +274,58 @@
     .whats:focus{outline:3px solid rgba(6,182,212,.30); outline-offset:3px}
     .whats svg{width:30px;height:30px;fill:#fff}
 
-    /* Reduce motion */
     @media (prefers-reduced-motion: reduce){
       *{transition:none !important}
+    }
+
+    /* ✅ AJUSTES MOBILE (o que você pediu) */
+    @media (max-width: 640px){
+      .wrap{padding:0 14px}
+
+      .topbar .inner{gap:10px}
+      .brand{gap:8px}
+      .brand span:nth-child(2){ /* "Diagnóstico de Posicionamento" */
+        font-size:14px;
+        max-width: 190px;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+      .badge{display:none} /* deixa a barra limpa no celular */
+
+      header.hero{padding:26px 0 10px}
+      .card.pad{padding:18px}
+
+      .kicker{letter-spacing:.10em}
+      .sub{font-size:16px}
+
+      .actions{gap:10px}
+      .actions .btn{
+        width:100%;
+        justify-content:center;
+        padding:14px 16px;
+      }
+
+      section.blocksec{padding:28px 0}
+      .lead{font-size:16px}
+
+      .qblock{padding:14px}
+      .qblock h3{font-size:16px}
+
+      /* checkboxes em 1 coluna */
+      .opts{grid-template-columns:1fr !important}
+
+      /* cards de lista um pouco menores */
+      .heroList li{padding:10px 10px}
+
+      /* Whats flutuante menor no celular */
+      .whats{width:56px;height:56px;right:14px}
+      .whats svg{width:28px;height:28px}
     }
   </style>
 </head>
 
 <body>
-
-  <!-- TOPBAR -->
   <div class="topbar">
     <div class="wrap inner">
       <div class="brand">
@@ -289,12 +333,10 @@
         <span>Diagnóstico de Posicionamento</span>
         <span class="badge">Envio via WhatsApp</span>
       </div>
-
       <a class="btn ghost" href="#diagnostico">Fazer agora</a>
     </div>
   </div>
 
-  <!-- HERO -->
   <header class="hero">
     <div class="wrap">
       <div class="heroGrid">
@@ -366,7 +408,6 @@
     </div>
   </header>
 
-  <!-- BLOQUEIOS -->
   <section class="blocksec">
     <div class="wrap">
       <h2 class="sectionTitle">Os 4 bloqueios que impedem crescimento financeiro</h2>
@@ -387,7 +428,6 @@
     </div>
   </section>
 
-  <!-- DIAGNÓSTICO -->
   <section class="blocksec" id="diagnostico">
     <div class="wrap">
       <h2 class="sectionTitle">Faça agora seu diagnóstico</h2>
@@ -395,7 +435,6 @@
 
       <form id="diagForm" class="card pad" aria-label="Formulário do diagnóstico">
 
-        <!-- 1 -->
         <div class="qblock" role="group" aria-labelledby="t1">
           <h3 id="t1">1️⃣ Sobre sua realidade financeira</h3>
           <p class="desc">Hoje você:</p>
@@ -410,7 +449,6 @@
           </div>
         </div>
 
-        <!-- 2 -->
         <div class="qblock" role="group" aria-labelledby="t2">
           <h3 id="t2">2️⃣ Sobre seu posicionamento profissional</h3>
           <p class="desc">Quando precisa se posicionar:</p>
@@ -425,7 +463,6 @@
           </div>
         </div>
 
-        <!-- 3 -->
         <div class="qblock" role="group" aria-labelledby="t3">
           <h3 id="t3">3️⃣ Sobre o bloqueio interno</h3>
           <p class="desc">Quando pensa em crescer, você sente:</p>
@@ -441,7 +478,6 @@
           </div>
         </div>
 
-        <!-- 4 -->
         <div class="qblock" role="group" aria-labelledby="t4">
           <h3 id="t4">4️⃣ Qual decisão você está adiando?</h3>
           <p class="desc">Assinale o que faz mais sentido agora:</p>
@@ -469,7 +505,6 @@
     </div>
   </section>
 
-  <!-- CTA FINAL -->
   <section class="blocksec">
     <div class="wrap">
       <div class="card pad" style="text-align:center">
@@ -484,7 +519,6 @@
     © Diagnóstico de Posicionamento Lucrativo — Todos os direitos reservados
   </div>
 
-  <!-- Whats flutuante -->
   <a class="whats" target="_blank" rel="noopener"
      href="https://wa.me/5549998110445?text=Olá,%20quero%20fazer%20o%20Diagnóstico%20de%20Posicionamento%20Lucrativo."
      aria-label="Falar no WhatsApp">
@@ -526,7 +560,6 @@
         lines.push(dec.length ? dec.map(x=>"• "+x).join("\n") : "• (não assinalei)");
         lines.push("");
         lines.push("Pode me enviar a análise e o próximo passo?");
-
         return lines.join("\n");
       }
 
